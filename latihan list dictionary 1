@@ -1,0 +1,76 @@
+nilai = [75, 60, 90, 45, 88, 70, 100, 55]
+#Hitung rata rata nilai
+total = 0
+for angka in nilai:
+    total = total + angka
+print(f"Total adalah {total}")
+
+rata_rata = total / len(nilai)
+print(f"Rata rata adalah {rata_rata}")
+
+#hitung nilai yang lulus dan tidak lulus
+nilai_lulus_list = []
+nilai_tidak_lulus_list = []
+for angka in nilai:
+    if angka >= 70:
+        nilai_lulus_list.append(angka)
+    if angka < 70:
+        nilai_tidak_lulus_list.append(angka)
+print(f"Nilai yang lulus = {nilai_lulus_list}")
+print(f"Banyak nilai yang lulus = {len(nilai_lulus_list)}")
+print(f"Nilai yang tidak lulus = {nilai_tidak_lulus_list}")
+print(f"Banyak nilai yang tidak lulus = {len(nilai_tidak_lulus_list)}")
+
+#urutkan nilai dari terkecil ke terbesar
+#pakai bubble sort
+#dia akan berulang ulang kali mengecek
+#menukar data
+#pakai for untuk inner dan outer untuk membuatnya berulang kali mengecek data
+#for inner , dikurangi 1 , supaya dia tidak coba mengakses melewati batas max list
+#for inner , dikurangi i , karena nilai paling max sudah pasti berada di paling kanan
+
+def bubble_sort(nilai):
+    n = len(nilai)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if nilai[j] > nilai[j+1]:
+                nilai[j], nilai[j+1] = nilai[j+1], nilai[j]
+    return nilai
+
+print(bubble_sort(nilai))
+
+
+mahasiswa = [
+    {"nama": "Andi", "nilai": 80},
+    {"nama": "Budi", "nilai": 65},
+    {"nama": "Citra", "nilai": 90},
+    {"nama": "Dina", "nilai": 50}
+]
+
+#Tampilkan nama mahasiswa yang nilainya diatas rata rata
+total_nilai_mahasiswa = 0
+for nilai in mahasiswa:
+    total_nilai_mahasiswa = total_nilai_mahasiswa + nilai["nilai"]
+
+rata_rata_nilai_mahasiswa = total_nilai_mahasiswa / len(mahasiswa)
+print(f"Rata rata nilai mahasiswa = {rata_rata_nilai_mahasiswa}")
+
+mahasiswa_lulus = []
+for mhs in mahasiswa:
+    if mhs["nilai"] > rata_rata_nilai_mahasiswa:
+        mahasiswa_lulus.append(mhs)
+
+print(f"mahasiswa nilainya di atas rata rata = {mahasiswa_lulus}")
+
+
+nilai_mahasiswa = []
+for angka in mahasiswa:
+    nilai_mahasiswa.append(angka["nilai"])
+
+print(f"nilai mahasiswa adalah {nilai_mahasiswa}")
+
+nilai_mahasiswa_berurutan = bubble_sort(nilai_mahasiswa)
+print(f"nilai mahasiswa berurutan = {nilai_mahasiswa_berurutan}")
+print(f"nilai mahasiswa maksimum = {nilai_mahasiswa_berurutan[-1]}")
+print(f"nilai mahasiswa minimum = {nilai_mahasiswa_berurutan[0]}")    
+print(f"Mahasiswa nilai max = {mahasiswa_lulus[-1]}")    
